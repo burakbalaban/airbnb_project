@@ -1,0 +1,37 @@
+#! python
+dates = [
+    "2018_04_21",
+    "2018_07_31",
+    "2018_08_27",
+    "2018_09_21",
+    "2018_10_18",
+    "2018_11_21",
+    "2018_12_21",
+    "2019_01_29",
+    "2019_02_18",
+    "2019_03_28",
+    "2019_04_27",
+    "2019_05_29",
+    "2019_06_29",
+    "2019_07_28",
+    "2019_08_31",
+    "2019_09_30",
+    "2019_10_30",
+    "2019_11_29"
+    ]
+
+def build(ctx):
+    # Iterate over data directory
+    for date in dates:
+        ctx(
+            features="run_py_script",
+            source="analysis.py",
+            deps=[
+                ctx.path_to(ctx, "IN_DATA", f"Airbnb_data/{date}_listings.csv"),
+                ctx.path_to(ctx, "OUT_DATA", "reduced_check_in_dataset.csv"),
+                ctx.path_to(ctx, "OUT_DATA", "generated_house_data.csv"),
+            ],
+            target=ctx.path_to(ctx, "OUT_PREDICTION", f"{date}_prediction.csv"),
+            append=date,
+            name=f"analysis_{date}",
+            )
