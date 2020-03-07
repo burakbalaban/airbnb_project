@@ -1,0 +1,143 @@
+\documentclass[11pt, a4paper, leqno]{article}
+\usepackage{a4wide}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{float, afterpage, rotating, graphicx}
+\usepackage{epstopdf}
+\usepackage{longtable, booktabs, tabularx}
+\usepackage{fancyvrb, moreverb, relsize}
+\usepackage{eurosym, calc}
+% \usepackage{chngcntr}
+\usepackage{amsmath, amssymb, amsfonts, amsthm, bm}
+\usepackage{caption}
+\usepackage{mdwlist}
+\usepackage{xfrac}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{subcaption}
+\usepackage{minibox}
+% \usepackage{pdf14} % Enable for Manuscriptcentral -- can't handle pdf 1.5
+% \usepackage{endfloat} % Enable to move tables / figures to the end. Useful for some submissions.
+
+
+
+\usepackage{natbib}
+\bibliographystyle{rusnat}
+
+
+
+
+\usepackage[unicode=true]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    anchorcolor=black,
+    citecolor=black,
+    filecolor=black,
+    menucolor=black,
+    runcolor=black,
+    urlcolor=black
+}
+
+
+\widowpenalty=10000
+\clubpenalty=10000
+
+\setlength{\parskip}{1ex}
+\setlength{\parindent}{0ex}
+\setstretch{1.5}
+
+
+\begin{document}
+
+\title{Comparing Airbnb Listing Prices with Inflation in Istanbul\thanks{Burak Balaban, University Bonn. Email: \href{mailto:brk.blbn@gmail.com}{\nolinkurl{brk [dot] blbn [at] gmail [dot] com}}.}}
+
+\author{Burak Balaban}
+
+\date{\today}
+
+\maketitle
+
+
+\section{Main Findings}
+
+The accounting method of Turkish inflation has been criticized
+by the press and various academics for over a decade.
+This paper intends to compare the change in Airbnb listing prices with
+official inflation announcement for Istanbul.
+Airbnb is a service that ables tenants to sub-rent their places for a fee,
+in other words, one can rent his house like a hotel-owner.
+The main assumption is, the change in prices of houses offered in Airbnb
+website should coincide with the change in Accommodation Services prices
+calculated by the Turkish Statistical Institute(TurkStat) \cite{TurkStat}.
+The data for Airbnb listings is from April 2018 until December 2019.
+May 2018 and June 2018 are missing. The Airbnb data is retrieved from
+insideairbnb website and further information regarding
+scraping methodology can be found on the insideairbnb website \cite{insideairbnb}.
+The dataset includes the features of houses including the number of rooms, beds,
+utilities offered, its location and many others.
+The processing of included utilities and other explanations written by a house owner
+requires Natural Language Processing which ignored by this paper, instead
+the length of explanations are taken into consideration.
+It is assumed that with more detailed explanation a house owner
+tends to spend more time in drawing the attention of renters and
+charge a higher price.
+
+The location of a house is also a significator determinant in the price yet
+only a score given by previous customers is available in the aformentioned
+dataset. Rather than relying solely on that score, using a dataset
+popular venues are tried to be found and a location-based score
+added to each house in the Airbnb dataset.
+I try to filter only venues in Istanbul in the Global Scale Check-in dataset
+which scraped from Foursquare by \cite{yang2016participatory}.
+Foursquare is a smartphone application that users can share their
+current visit to venues.
+After counting check-ins in those venues and dividing that count with
+the distance between a house and venues within 1 km,
+a location-based score is calculated and added to the analysis.
+
+Using a certain amount of the features in the Airbnb dataset,
+a set of houses generated randomly and prices for those houses
+tried to be predicted by using Extreme Gradient Boosting Algorithm.
+For each Airbnb dataset, a model is trained and based on the given
+information model predicts prices for generated data.
+The change in the means of those predictions is the interest.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{../../out/figures/monthly_change_figure.png}
+    \caption{Monthly Percentage Price Change}
+    \label{fig:monthly}
+\end{figure}
+\autoref{fig:monthly} shows the monthly change in predicted prices
+denoted as Analysis(Airbnb) and
+official statistics calculated by TurkStat.
+Predicted price change follows a pattern around the official statistic
+which may stem from seasonality.
+
+\begin{figure}[H]
+    \includegraphics[width=\textwidth]{../../out/figures/yearly_change_figure.png}
+    \caption{Percentage Price Change Compared the Last Year's Same Month}
+    \label{fig:yearly}
+\end{figure}
+
+
+\autoref{fig:yearly} displays the yearly percentage change in predictions
+alongside with official statistics.
+Since there is not available data for May and June 2018,
+in analysis those observations are missing.
+In \autoref{fig:yearly}, our predictions displays
+rather odd pattern compared to official statistics.
+Therefore, Airbnb prices may not be a significant indicator
+of Accommodation Services prices in Istanbul.
+
+\bibliography{refs}
+
+
+
+% \appendix
+
+% The chngctr package is needed for the following lines.
+% \counterwithin{table}{section}
+% \counterwithin{figure}{section}
+
+\end{document}

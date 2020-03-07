@@ -1,0 +1,11 @@
+#! python
+
+
+def build(ctx):
+
+    ctx(features="tex", source= "Explanation_of_Findings.tex", prompt=1, name="Explanation_of_Findings")
+    # Install to the project root.
+    ctx.install_files(ctx.env.PROJECT_PATHS["PROJECT_ROOT"].abspath(), "Explanation_of_Findings.pdf")
+    # Running LaTeX processes in parallel leads to
+    # too many potential problems.
+    ctx.add_group()
