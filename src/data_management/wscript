@@ -1,0 +1,15 @@
+#! python
+
+
+def build(ctx):
+
+    ctx(
+        features="run_py_script",
+        source="data_management_checkin.py",
+		deps=[
+			ctx.path_to(ctx, "IN_DATA", "Foursquare_data/dataset_TIST2015_Checkins.txt"),
+			ctx.path_to(ctx, "IN_DATA", "Foursquare_data/dataset_TIST2015_POIs.txt"),
+		],
+        target=ctx.path_to(ctx, "OUT_DATA", "reduced_check_in_dataset.csv"),
+        name="data_management_checkin",
+    )
