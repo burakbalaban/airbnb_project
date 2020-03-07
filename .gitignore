@@ -24,8 +24,5 @@ bld/
 # Waf cache
 .lock-waf*
 
-# Big dataset
-Foursquare_data/
-
 # Pre-commit hook
 .pre-commit*
