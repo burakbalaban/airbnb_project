@@ -1,0 +1,12 @@
+summary
+space
+description
+neighborhood_overview
+notes
+transit
+access
+interaction
+house_rules
+host_about
+host_verifications
+amenities

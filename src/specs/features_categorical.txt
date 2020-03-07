@@ -1,0 +1,5 @@
+{
+"room_type": ["Entire home/apt", "Private room"],
+"bed_type": ["Real Bed", "Pull-out Sofa", "Couch", "Airbed", "Futon"],
+"cancellation_policy": ["flexible", "moderate", "strict_14_with_grace_period", "super_strict_30"]
+}
