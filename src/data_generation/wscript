@@ -1,0 +1,15 @@
+#! python
+
+
+def build(ctx):
+
+    ctx(
+        features="run_py_script",
+        source="house_data_generation.py",
+		deps=[
+			ctx.path_to(ctx,'IN_SPECS', 'features_min_max.txt'),
+			ctx.path_to(ctx,'IN_SPECS', 'features_categorical.txt')
+		],
+		target=ctx.path_to(ctx, "OUT_DATA", "generated_house_data.csv"),
+        name="house_data_generation",
+    )
