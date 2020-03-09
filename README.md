@@ -25,5 +25,7 @@ For modelling and predicting Extreme Gradient Boosting(XGBoost) is used.
 ## References
 
 Inside Airbnb. Inside airbnb. Adding data to the debate. 2019. Online; accessed 10 February 2020.
+
 Turkish Statistical Institute. Consumer Price Index. Online; accessed 10 February 2020.
+
 Dingqi Yang, Daqing Zhang, and Bingqing Qu. Participatory cultural mapping based on collective behavior data in location-based social networks. ACM Transactions on Intelligent Systems and Technology (TIST), 7(3):1–23, 2016.
