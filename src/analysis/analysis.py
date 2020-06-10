@@ -127,7 +127,6 @@ def score_func(house_data, venue_data):
     )
     location_score_list = np.empty([len(house_data), 1])
 
-    @jit(nopython=True)
     def numba_func(venue_data_list, house_data_coordinate):
         """Inside function for numba application.
         """
@@ -156,6 +155,7 @@ def score_func(house_data, venue_data):
             np.append(location_score_list, np.mean(score_list))
         return location_score_list
 
+    location_score_list = numba_func(venue_data_list,house_data_coordinate)
     house_data["location_score"] = location_score_list
 
     return house_data
